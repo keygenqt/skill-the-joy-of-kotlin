@@ -1,5 +1,5 @@
-import exercise_3_2.runExercise32
+import exercise_3_6.run
 
 fun main(args: Array<String>) {
-    runExercise32()
+    run()
 }
