@@ -4,17 +4,16 @@ fun square(n: Int) = n * n
 
 fun triple(n: Int) = (n * 3)
 
-// book
-fun <A, B, C> higherAndThen(): ((A) -> B) -> ((B) -> C) -> (A) -> C =
+// andThen is like compose, but calls the first function and then the second, g(f(x))
+fun <A, B, C> andThen(): ((A) -> B) -> ((B) -> C) -> (A) -> C =
     { f: (A) -> B ->
         { g: (B) -> C ->
             { x: A -> g(f(x)) }
         }
     }
 
-// my
-// Either I don't understand something or there is a bug in the book
-fun <A, B, C> higherAndThen2(): ((A) -> C) -> ((B) -> A) -> (B) -> C =
+// compose makes a new function that composes other functions f(g(x))
+fun <A, B, C> compose(): ((A) -> C) -> ((B) -> A) -> (B) -> C =
     { f: (A) -> C ->
         { g: (B) -> A ->
             { x: B -> f(g(x)) }
@@ -22,6 +21,6 @@ fun <A, B, C> higherAndThen2(): ((A) -> C) -> ((B) -> A) -> (B) -> C =
     }
 
 fun run() {
-    println("Book: " + higherAndThen<Int, Int, Int>()(::triple)(::square)(2))
-    println("My: " + higherAndThen2<Int, Int, Int>()(::triple)(::square)(2))
+    println("andThen: " + andThen<Int, Int, Int>()(::triple)(::square)(2))
+    println("compose: " + compose<Int, Int, Int>()(::triple)(::square)(2))
 }
