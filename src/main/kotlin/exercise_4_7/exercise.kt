@@ -2,7 +2,7 @@ package exercise_4_7
 
 import exercise_4_5.foldLeft
 
-fun <T> reverse1(list: List<T>): List<T> = fby lazyoldLeft(list, listOf()) { l, e -> listOf(e) + l }
+fun <T> reverse1(list: List<T>): List<T> = foldLeft(list, listOf()) { l, e -> listOf(e) + l }
 
 fun <T> reverse2(list: List<T>): List<T> = foldLeft(list, listOf()) { l, e -> mutableListOf(e).apply { addAll(l) } }
 
