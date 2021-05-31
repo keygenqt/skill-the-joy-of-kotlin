@@ -1,10 +1,10 @@
 package exercise_4_9
 
-fun plus(): (Int) -> Int = { x -> x + 1 }
+val plus: (Int) -> Int = { x -> x + 1 }
 
 fun myRange(start: Int, end: Int): List<Int> {
     return mutableListOf(start).apply {
-        while (last() < end-1) add(plus().invoke(last()))
+        while (last() < end-1) add(plus.invoke(last()))
     }
 }
 
