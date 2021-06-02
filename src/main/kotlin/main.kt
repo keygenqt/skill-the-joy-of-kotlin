@@ -1,4 +1,4 @@
-import exercise_4_18.run
+import just_memoize.run
 
 fun main(args: Array<String>) {
     run()
