@@ -1,4 +1,4 @@
-import exercise_4_16.run
+import exercise_0_0.run
 
 fun main(args: Array<String>) {
     run()

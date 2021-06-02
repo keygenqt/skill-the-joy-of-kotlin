@@ -34,7 +34,11 @@ fun sleep(): (Int) -> Boolean {
 tailrec
 fun live(age: Int, vararg events: (() -> (Int) -> Boolean)) {
     println("---> Age: $age")
-    events.forEach { event -> if (!event()(age)) die() }
+    try {
+        events.forEach { event -> if (!event()(age)) die() }
+    } catch (ex: RuntimeException) {
+        println("No time to rest")
+    }
     live(age + 1, *events)
 }
 
